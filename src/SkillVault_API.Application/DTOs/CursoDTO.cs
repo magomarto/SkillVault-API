@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SkillVault_API.src.SkillVault_API.Application.DTOs
+namespace SkillVault_API.Application.DTOs
 {
     public class CursoDTO
     {
