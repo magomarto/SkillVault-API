@@ -1,33 +1,66 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using SkillVault_API.Core.Enums;
 
 namespace SkillVault_API.Core.Entities
 {
     public class Matricula
     {
-        // Construtor para inicializar valores padrão e garantir integridade
-        public Matricula(int alunoId, int cursoId, DateTime dataMatricula)
+        public Matricula(int alunoId, int cursoId, StatusMatricula status)
         {
             AlunoId = alunoId;
             CursoId = cursoId;
-            DataMatricula = dataMatricula;
+            Status = status;
+            DataMatricula = DateTime.UtcNow;
+            Validar();
         }
 
         protected Matricula() { }
 
-        public int Id { get; private set; }
+        public int MatriculaId { get; private set; }
 
-        [Required(ErrorMessage = "O ID do aluno é obrigatório.")]
+        [Required(ErrorMessage = "O aluno é obrigatório.")]
         public int AlunoId { get; private set; }
 
-        [Required(ErrorMessage = "O ID do curso é obrigatório.")]
+        [Required(ErrorMessage = "O curso é obrigatório.")]
         public int CursoId { get; private set; }
 
-        [Required(ErrorMessage = "A data de matrícula é obrigatória.")]
+        [Required(ErrorMessage = "O status é obrigatório.")]
+        public StatusMatricula Status { get; private set; }
+
+        [Range(0, 10, ErrorMessage = "A nota deve ser entre 0 e 10.")]
+        public decimal? NotaFinal { get; private set; } 
+
         public DateTime DataMatricula { get; private set; }
+        public DateTime? DataConclusao { get; private set; }
+        public DateTime? DataAtualizacao { get; private set; }
 
-        public virtual Aluno Aluno { get; private set; } // Relacionamento com Aluno (uma matrícula pertence a um aluno)
-        public virtual Curso Curso { get; private set; } // relacionamento com Curso (uma matricula pertence a um curso)
+        // Relacionamentos
+        public virtual Aluno Aluno { get; private set; }
+        public virtual Curso Curso { get; private set; }
+
+        private void Validar()
+        {
+            if (AlunoId <= 0 || CursoId <= 0)
+                throw new ArgumentException("Aluno ou curso inválido.");
+        }
+
+        public void AtualizarStatus(StatusMatricula novoStatus)
+        {
+            Status = novoStatus;
+            DataAtualizacao = DateTime.UtcNow;
+
+            if (novoStatus == StatusMatricula.Concluida)
+                DataConclusao = DateTime.UtcNow;
+        }
+
+        public void AtribuirNotaFinal(decimal nota)
+        {
+            if (Status != StatusMatricula.Concluida)
+                throw new InvalidOperationException("A nota só pode ser atribuída a matrículas concluídas.");
+
+            NotaFinal = nota;
+            DataAtualizacao = DateTime.UtcNow;
+        }
     }
-
-        
 }
