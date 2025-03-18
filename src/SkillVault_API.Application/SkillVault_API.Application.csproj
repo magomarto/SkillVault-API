@@ -2,8 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>SkillVault_API.Application</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <!-- Referência a Core -->
+    <ProjectReference Include="..\SkillVault_API.Core\SkillVault_API.Core.csproj" />
+
+    <!-- Pacotes adicionais (se necessário) -->
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
+    <PackageReference Include="FluentValidation" Version="11.9.0" />
+  </ItemGroup>
+
 </Project>
+
+<!--contém a lógica de negócio e casos de uso. depende do SkillVault_API.Core para acessar entidades e interfaces.-->

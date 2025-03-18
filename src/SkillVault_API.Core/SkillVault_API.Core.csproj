@@ -2,8 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>SkillVault_API.Core</RootNamespace>
   </PropertyGroup>
 
+  <!--
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="8.0.0" />
+  </ItemGroup> 
+  -->
+
 </Project>
+
+<!-- 
+contem as entidades, interfaces e contratos. não deve ter dependencias externas a menos que
+sejam pacotes essenciais(como :System.Text.Json) 
+-->

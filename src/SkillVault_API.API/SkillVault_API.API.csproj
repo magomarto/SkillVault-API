@@ -1,9 +1,22 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>SkillVault_API.API</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <!-- Referências a Application e Infrastructure -->
+    <ProjectReference Include="..\SkillVault_API.Application\SkillVault_API.Application.csproj" />
+    <ProjectReference Include="..\SkillVault_API.Infrastructure\SkillVault_API.Infrastructure.csproj" />
+
+    <!-- Pacotes da API -->
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.14" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
+  </ItemGroup>
+
 </Project>
+<!-- é o projeto da API, que depende do SkillVault_API.Application e de SkillVault_API.Infrastructure. -->

@@ -2,21 +2,27 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>SkillVault_API.Infrastructure</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
+    <!-- referencias a Core e Application -->
+    <ProjectReference Include="..\SkillVault_API.Core\SkillVault_API.Core.csproj" />
+    <ProjectReference Include="..\SkillVault_API.Application\SkillVault_API.Application.csproj" />
+
+    <!-- Pacotes de infraestrutura -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.3">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0" />
-</ItemGroup>
-
-<ItemGroup>
-    <ProjectReference Include="..\SkillVault_API.Infrastructure\SkillVault_API.Infrastructure.csproj" />
-</ItemGroup>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+  </ItemGroup>
 
 </Project>
+<!--
+implementa a infraestrutura, como acesso ao db, repositórios, etc. 
+Ele depende do SkillVault_API.Core e de SkillVault_API.Application.
+-->
