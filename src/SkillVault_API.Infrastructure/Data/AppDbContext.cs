@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SkillVault_API.Core.Entities;
 
-namespace SkillVault_API.Infrastructure.Data // 
+namespace SkillVault_API.Infrastructure.Data 
 {
     public class AppDbContext : DbContext
     {
@@ -19,7 +19,7 @@ namespace SkillVault_API.Infrastructure.Data //
         public DbSet<Matricula> Matriculas { get; set; }
         public DbSet<CursoDisciplina> CursoDisciplinas { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder) // MELHORIA :depois criar um diretorio "Configurations "com classes de configuração para cada entidade
         {
             base.OnModelCreating(modelBuilder);
 
