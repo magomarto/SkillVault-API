@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SkillVault_API.Core.Entities;
+using SkillVault_API.Infrastructure.Data.Configurations;
 
 namespace SkillVault_API.Infrastructure.Data 
 {
@@ -9,7 +10,6 @@ namespace SkillVault_API.Infrastructure.Data
         {
         }
 
-        // DbSets
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Aluno> Alunos { get; set; }
         public DbSet<Coordenador> Coordenadores { get; set; }
@@ -18,6 +18,14 @@ namespace SkillVault_API.Infrastructure.Data
         public DbSet<Disciplina> Disciplinas { get; set; }
         public DbSet<Matricula> Matriculas { get; set; }
         public DbSet<CursoDisciplina> CursoDisciplinas { get; set; }
+
+        /*
+        protected override void OnModelCreating(ModelBuilder modelbuilder)
+        {
+            
+
+        }
+        */
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) // MELHORIA :depois criar um diretorio "Configurations "com classes de configuração para cada entidade
         {
